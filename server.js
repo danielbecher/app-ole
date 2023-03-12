@@ -1,8 +1,11 @@
 // Config
 var express = require('express');
 var http = require('http');
+var cors = require('cors')
 var app = express();
 var server = http.createServer(app);
+
+app.use(cors())
 
 app.set('port', definePort());
 server.listen(definePort());
@@ -10,6 +13,7 @@ console.log("Server listen on port "+definePort())
 
 // Router
 app.get('/', function (request, response) {
+    console.log('teste')
     response.setHeader('Content-type', 'text/html');
     response.sendFile('./index.html', {root: __dirname });
     response.status('200');
